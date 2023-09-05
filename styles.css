@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+  font-family: "League Spartan";
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: hsl(180, 52%, 96%);
+}
+
+header > img {
+  background-color: hsl(180, 29%, 50%);
+}
+
+section {
+  margin: 4rem 8rem;
+}
+
+#listingCard {
+  display: flex;
+  align-items: center;
+  margin: 1.2rem 0;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 0.3rem;
+  border-left: 5px solid hsl(180, 29%, 50%);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+#listingCard > div:nth-child(2) {
+  margin-left: 1rem;
+}
+
+#listingCard > div:nth-child(3) {
+  margin: 0 0 0 auto;
+}
+
+#listingCard > div > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#listingCard > div > div:nth-child(3) {
+  margin-top: 0.5rem;
+  color: hsl(180, 8%, 52%);
+}
+
+#listingCard > div > h3 {
+  margin: 0.5rem 0 0 0;
+  color: hsl(180, 14%, 20%);
+}
+
+#listingCard > div > div > h4 {
+  margin: 0 0 0 0;
+  color: hsl(180, 29%, 50%);
+}
+
+#labelNew {
+  padding: 0.3rem 0.5rem;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background-color: hsl(180, 29%, 50%);
+  border-radius: 50px;
+}
+
+#labelFeatured {
+  padding: 0.3rem 0.5rem;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background-color: hsl(180, 14%, 20%);
+  border-radius: 50px;
+}
+
+.otherInfo {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: hsl(180, 8%, 52%);
+}
+
+.filterTab {
+  padding: 0.5rem;
+  font-weight: 700;
+  color: hsl(180, 29%, 50%);
+  background-color: hsl(180, 31%, 95%);
+  border-radius: 0.3rem;
+}
