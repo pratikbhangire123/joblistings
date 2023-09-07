@@ -15,22 +15,24 @@ header > img {
   background-color: hsl(180, 29%, 50%);
 }
 
-section {
+#listings {
   margin: 4rem 8rem;
 }
 
 #listingCard {
+  position: relative;
   display: flex;
   align-items: center;
   margin: 1.2rem 0;
-  padding: 2rem;
+  padding: 1.5rem;
   background-color: #fff;
   border-radius: 0.3rem;
   border-left: 5px solid hsl(180, 29%, 50%);
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px 0 rgba(91, 164, 164, 0.25);
 }
 
 #listingCard > div:nth-child(2) {
+  min-width: 25%;
   margin-left: 1rem;
 }
 
@@ -38,28 +40,18 @@ section {
   margin: 0 0 0 auto;
 }
 
-#listingCard > div > div {
+#newOrFeatured {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
-#listingCard > div > div:nth-child(3) {
-  margin-top: 0.5rem;
-  color: hsl(180, 8%, 52%);
-}
-
-#listingCard > div > h3 {
-  margin: 0.5rem 0 0 0;
-  color: hsl(180, 14%, 20%);
-}
-
-#listingCard > div > div > h4 {
+#newOrFeatured > h4 {
   margin: 0 0 0 0;
   color: hsl(180, 29%, 50%);
 }
 
 #labelNew {
+  margin: 0 0.5rem 0 0.5rem;
   padding: 0.3rem 0.5rem;
   font-size: 13px;
   font-weight: 700;
@@ -77,7 +69,20 @@ section {
   border-radius: 50px;
 }
 
-.otherInfo {
+#positionName {
+  margin: 0.5rem 0 0 0;
+  color: hsl(180, 14%, 20%);
+}
+
+#otherInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  color: hsl(180, 8%, 52%);
+}
+
+.otherInfoItem {
   margin: 0;
   font-size: 15px;
   font-weight: 500;
@@ -86,8 +91,11 @@ section {
 
 .filterTab {
   padding: 0.5rem;
+  font-size: 14px;
   font-weight: 700;
   color: hsl(180, 29%, 50%);
   background-color: hsl(180, 31%, 95%);
+  border: none;
   border-radius: 0.3rem;
+  cursor: pointer;
 }
