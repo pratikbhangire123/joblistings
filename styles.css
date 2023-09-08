@@ -11,8 +11,24 @@ body {
   background-color: hsl(180, 52%, 96%);
 }
 
+header {
+  position: relative;
+}
+
 header > img {
   background-color: hsl(180, 29%, 50%);
+}
+
+#appliedFilters {
+  position: absolute;
+  visibility: hidden;
+  width: 79.7%;
+  bottom:-15%;
+  margin: 0 8rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 0.3rem;
+  box-shadow: 0 5px 10px 0 rgba(91, 164, 164, 0.25);
 }
 
 #listings {
@@ -72,6 +88,11 @@ header > img {
 #positionName {
   margin: 0.5rem 0 0 0;
   color: hsl(180, 14%, 20%);
+  cursor: pointer;
+}
+
+#positionName:hover {
+  color: hsl(180, 29%, 50%);
 }
 
 #otherInfo {
@@ -98,4 +119,9 @@ header > img {
   border: none;
   border-radius: 0.3rem;
   cursor: pointer;
+}
+
+.filterTab:hover {
+  color: #fff;
+  background-color: hsl(180, 29%, 50%);
 }

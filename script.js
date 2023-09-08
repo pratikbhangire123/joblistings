@@ -1,16 +1,40 @@
 import dataFile from "./data.json" assert { type: "json" };
+let appliedFiltersSection = document.getElementById("appliedFilters");
 let listingSection = document.getElementById("listings");
 
-function createListings() {
-  listingSection.innerHTML = dataFile
-    .map(
-      (item) => `
+function jobListings() {
+  let data = createData();
+  createListings(data);
+}
+
+function createData(filter = null) {
+  return dataFile.map((item) => {
+    if (item.role == filter) {
+      return item;
+    } else if (item.level == filter) {
+      return item;
+    } else if (item.languages.includes(filter)) {
+      return item;
+    } else if (item.tools.includes(filter)) {
+      return item;
+    } else if (filter == null || filter == "") {
+      return item;
+    }
+  });
+}
+
+function createListings(data) {
+  listingSection.innerHTML = data
+    .map((item) =>
+      item == undefined
+        ? ``
+        : `
     <div key=${item.id} id="listingCard">
         <img src="${item.logo}" alt="comapny-logo" height="80" />
         <div>
             <div id="newOrFeatured">
                 <h4>${item.company}</h4>
-                ${item.new === true ? `<label id="labelNew">NEW!</label>` : ``} 
+                ${item.new === true ? `<label id="labelNew">NEW!</label>` : ``}
                 ${
                   item.featured === true
                     ? `<label id="labelFeatured">FEATURED</label>`
@@ -25,7 +49,7 @@ function createListings() {
             </div>
         </div>
         <div>
-            <button class="filterTab">${item.role}</button>
+            <button class="filterTab"}>${item.role}</button>
             <button class="filterTab">${item.level}</button>
             ${item.languages
               .map(
@@ -42,6 +66,8 @@ function createListings() {
     .join("");
 }
 
+jobListings();
+
 // function highlightFeaturedListing() {
 //   dataFile.map((item) =>
 //     item.featured == true
@@ -50,5 +76,3 @@ function createListings() {
 //       : ""
 //   );
 // }
-
-createListings();
