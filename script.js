@@ -67,12 +67,3 @@ function createListings(data) {
 }
 
 jobListings();
-
-// function highlightFeaturedListing() {
-//   dataFile.map((item) =>
-//     item.featured == true
-//       ? (document.getElementById("listingCard").style.borderLeft =
-//           "5px solid hsl(180, 29%, 50%)")
-//       : ""
-//   );
-// }
