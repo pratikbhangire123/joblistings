@@ -1,26 +1,26 @@
 import dataFile from "./data.json" assert { type: "json" };
 let appliedFiltersSection = document.getElementById("appliedFilters");
 let listingSection = document.getElementById("listings");
+let appliedFilters = [];
 
 function jobListings() {
-  let data = createData();
+  let data = dataFile.filter((item) => createData(item, appliedFilters));
+  console.log(data);
   createListings(data);
 }
 
-function createData(filter = null) {
-  return dataFile.map((item) => {
-    if (item.role == filter) {
-      return item;
-    } else if (item.level == filter) {
-      return item;
-    } else if (item.languages.includes(filter)) {
-      return item;
-    } else if (item.tools.includes(filter)) {
-      return item;
-    } else if (filter == null || filter == "") {
-      return item;
-    }
-  });
+function createData(item, filter = null) {
+  if (item?.role == filter) {
+    return item;
+  } else if (item?.level == filter) {
+    return item;
+  } else if (item?.languages.includes(filter)) {
+    return item;
+  } else if (item?.tools.includes(filter)) {
+    return item;
+  } else if (filter == null || filter == "") {
+    return item;
+  }
 }
 
 function createListings(data) {
@@ -64,6 +64,23 @@ function createListings(data) {
     `
     )
     .join("");
+}
+
+function addFilter() {
+  let filterTabs = document.getElementsByClassName("filterTab");
+  [...filterTabs].forEach((tab) =>
+    tab.addEventListener("click", () => {
+      appliedFiltersSection.style.visibility = "visible";
+      appliedFilters.includes(tab.textContent)
+        ? ""
+        : appliedFilters.push(tab.textContent);
+      appliedFiltersSection.innerHTML = appliedFilters
+        .map((filter) => `<label>${filter}</label>`)
+        .join(" ");
+      // console.log(appliedFilters);
+      // jobListings(appliedFilters[1]);
+    })
+  );
 }
 
 jobListings();
