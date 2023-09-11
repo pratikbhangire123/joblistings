@@ -6,12 +6,21 @@ let appliedFilters = [];
 
 function addFilter() {
   let filterTabs = document.getElementsByClassName("filterTab");
+
   [...filterTabs].forEach((tab) =>
     tab.addEventListener("click", () => {
       appliedFiltersContainer.style.visibility = "visible";
+
       appliedFilters.includes(tab.textContent)
         ? ""
         : appliedFilters.push(tab.textContent);
+
+      appliedFilters.includes(tab.textContent)
+        ? ((tab.style.backgroundColor = "hsl(180, 29%, 50%)"),
+          (tab.style.color = "#fff"))
+        : ((tab.style.backgroundColor = "hsl(180, 31%, 95%)"),
+          (tab.style.color = "hsl(180, 29%, 50%)"));
+
       appliedFiltersContainer.innerHTML = appliedFilters
         .map((filter) => `<label>${filter}</label>`)
         .join(" ");
