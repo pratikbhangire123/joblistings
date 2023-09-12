@@ -76,5 +76,3 @@ dataFile
 //     }
 //   });
 // });
-
-// console.log(results);
