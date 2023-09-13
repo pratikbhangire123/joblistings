@@ -1,13 +1,13 @@
-export default function filterData(item, filter = null) {
-  if (item?.role == filter) {
-    return item;
-  } else if (item?.level == filter) {
-    return item;
-  } else if (item?.languages.includes(filter)) {
-    return item;
-  } else if (item?.tools.includes(filter)) {
-    return item;
-  } else if (filter == null || filter == "") {
+export default function filterData(
+  item,
+  filters = { role: "", level: "", languages: [], tools: [] }
+) {
+  if (
+    item?.role == filters.role &&
+    item?.level == filters.level &&
+    filters.languages.every((language) => item?.languages.includes(language)) &&
+    filters.tools.every((tool) => item?.tools.includes(tool))
+  ) {
     return item;
   }
 }

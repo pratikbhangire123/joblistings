@@ -2,7 +2,12 @@ import filterData from "./filterData.js";
 import createListings from "./createListings.js";
 let dataFile = fetch("../data.json").then((res) => res.json());
 let appliedFiltersContainer = document.getElementById("appliedFilters");
-let appliedFilters = [];
+let appliedFilters = {
+  role: "",
+  level: "",
+  languages: [],
+  tools: [],
+};
 
 function addFilter() {
   let filterTabs = document.getElementsByClassName("filterTab");
@@ -22,8 +27,18 @@ function addFilter() {
           (tab.style.color = "hsl(180, 29%, 50%)"));
 
       appliedFiltersContainer.innerHTML = appliedFilters
-        .map((filter) => `<label>${filter}</label>`)
+        .map(
+          (filter) =>
+            `<label>${filter}</label><button id="removeFilter">Remove</button>`
+        )
         .join(" ");
+
+      // document.getElementById("removeFilter").addEventListener("click", () => {
+      //   appliedFilters.pop(tab.textContent);
+      //   console.log(appliedFilters);
+      // });
+
+      // console.log(appliedFilters);
     })
   );
 }
@@ -31,48 +46,15 @@ function addFilter() {
 dataFile
   .then((data) => {
     createListings(data);
-    addFilter(data);
+    console.log(data);
+    appliedFilters.role = "Frontend";
+    appliedFilters.level = "Junior";
+    appliedFilters.languages = ["JavaScript", "HTML"];
+    appliedFilters.tools = ["Sass"];
+    let filteredListings = data.filter((item) =>
+      filterData(item, appliedFilters)
+    );
+    console.log(filteredListings);
+    // addFilter(data);
   })
   .catch((err) => console.error(err));
-
-// const people = [
-//   {
-//     name: "Adam",
-//     age: 30,
-//     country: "Austria",
-//     languages: ["English", "Spanish"],
-//   },
-//   {
-//     name: "Bob",
-//     age: 40,
-//     country: "Belgium",
-//     languages: ["English", "French"],
-//   },
-//   {
-//     name: "Carl",
-//     age: 30,
-//     country: "Canada",
-//     languages: ["Spanish", "Portuguese"],
-//   },
-//   {
-//     name: "Adam",
-//     age: 40,
-//     country: "Austria",
-//     languages: ["Spanish", "Portuguese"],
-//   },
-// ];
-
-// const conditions = {
-//   name: "Adam",
-//   country: "Austria",
-//   languages: ["Spanish"],
-// };
-
-// const results = people.filter((person) => {
-//   return Object.keys(conditions).every((key) => {
-//     // return conditions[key] === person[key];
-//     if (Array.isArray(conditions[key])) {
-//       return conditions[key] == person[key];
-//     }
-//   });
-// });
