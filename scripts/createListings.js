@@ -28,15 +28,19 @@ export default function createListings(data) {
               </div>
           </div>
           <div>
-              <button class="filterTab"}>${item.role}</button>
-              <button class="filterTab">${item.level}</button>
+              <button id="role" class="filterTab"}>${item.role}</button>
+              <button id="level" class="filterTab">${item.level}</button>
               ${item.languages
                 .map(
-                  (language) => `<button class="filterTab">${language}</button>`
+                  (language) =>
+                    `<button id="language" class="filterTab">${language}</button>`
                 )
                 .join(" ")}
               ${item.tools
-                .map((tool) => `<button class="filterTab">${tool}</button>`)
+                .map(
+                  (tool) =>
+                    `<button id="tool" class="filterTab">${tool}</button>`
+                )
                 .join(" ")}
           </div>
       </div>
