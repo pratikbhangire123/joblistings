@@ -22,13 +22,31 @@ header > img {
 #appliedFilters {
   position: absolute;
   visibility: hidden;
+  display: flex;
   width: 79.7%;
-  bottom:-15%;
+  bottom: -15%;
+  align-items: center;
+  justify-content: space-between;
   margin: 0 8rem;
-  padding: 1.5rem;
+  padding: 1.2rem;
   background-color: #fff;
   border-radius: 0.3rem;
   box-shadow: 0 5px 10px 0 rgba(91, 164, 164, 0.25);
+}
+
+#appliedFilters > label {
+  margin-left: auto;
+  font-weight: 700;
+  color: hsl(180, 29%, 50%);
+  cursor: pointer;
+}
+
+#appliedFilters > label:hover {
+  text-decoration: underline;
+}
+
+#filters {
+  display: flex;
 }
 
 #listings {
@@ -124,4 +142,25 @@ header > img {
 .filterTab:hover {
   color: #fff;
   background-color: hsl(180, 29%, 50%);
+}
+
+.appliedFilter {
+  position: relative;
+  margin: 0 0.5rem;
+  padding-left: 0.5rem;
+  font-weight: 700;
+  color: hsl(180, 29%, 50%);
+  background-color: hsl(180, 31%, 95%);
+  border-radius: 0.3rem;
+}
+
+.removeFilterButton {
+  height: 100%;
+  margin-left: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  background-color: hsl(180, 29%, 50%);
+  border: none;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  cursor: pointer;
 }

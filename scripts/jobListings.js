@@ -2,6 +2,7 @@ import filterData from "./filterData.js";
 import createListings from "./createListings.js";
 let dataFile = fetch("../data.json").then((res) => res.json());
 let appliedFiltersContainer = document.getElementById("appliedFilters");
+let filters = document.getElementById("filters");
 let appliedFilters = {
   role: "",
   level: "",
@@ -9,7 +10,7 @@ let appliedFilters = {
   tools: [],
 };
 
-function addFilter(data) {
+export function addFilter(data) {
   let filterTabs = document.getElementsByClassName("filterTab");
 
   [...filterTabs].forEach((tab) =>
@@ -27,40 +28,60 @@ function addFilter(data) {
         ? appliedFilters.tools.push(tab.textContent)
         : false;
 
-      appliedFilters.role.includes(tab.textContent) ||
-      appliedFilters.level.includes(tab.textContent) ||
-      appliedFilters.languages.includes(tab.textContent) ||
-      appliedFilters.tools.includes(tab.textContent)
-        ? ((tab.style.backgroundColor = "hsl(180, 29%, 50%)"),
-          (tab.style.color = "#fff"))
-        : ((tab.style.backgroundColor = "hsl(180, 31%, 95%)"),
-          (tab.style.color = "hsl(180, 29%, 50%)"));
-
-      appliedFiltersContainer.innerHTML = `<label>
-        ${appliedFilters.role} 
-        ${appliedFilters.level} 
-        ${[...appliedFilters.languages].join(" ")} 
-        ${[...appliedFilters.tools].join(" ")}
-      <label>`;
+      // appliedFilters.role.includes(tab.textContent) ||
+      // appliedFilters.level.includes(tab.textContent) ||
+      // appliedFilters.languages.includes(tab.textContent) ||
+      // appliedFilters.tools.includes(tab.textContent)
+      //   ? ((tab.style.backgroundColor = "hsl(180, 29%, 50%)"),
+      //     (tab.style.color = "#fff"))
+      //   : ((tab.style.backgroundColor = "hsl(180, 31%, 95%)"),
+      //     (tab.style.color = "hsl(180, 29%, 50%)"));
 
       let filteredData = data.filter((item) =>
         filterData(item, appliedFilters)
       );
 
-      // filteredData.forEach((item) => {
-      //   document
-      //     .querySelectorAll("#listingCard")
-      //     .forEach((card) =>
-      //       item.id !== +card.getAttribute("key")
-      //         ? (card.style.visibility = "hidden")
-      //         : false
-      //     );
-      // });
+      createListings(filteredData);
 
-      // document.getElementById("removeFilter").addEventListener("click", () => {
-      //   appliedFilters.pop(tab.textContent);
-      //   console.log(appliedFilters);
-      // });
+      filters.innerHTML = Object.keys(appliedFilters)
+        .map((filter) =>
+          appliedFilters[filter] == ""
+            ? ``
+            : Array.isArray(appliedFilters[filter])
+            ? appliedFilters[filter]
+                .map(
+                  (value) =>
+                    `
+                    <div class="appliedFilter">
+                      ${value}
+                      <button id=${filter} class="removeFilterButton">
+                        <img src="../images/icon-remove.svg" />
+                      </button>
+                    </div>
+                    `
+                )
+                .join(" ")
+            : `
+              <div class="appliedFilter">
+                ${appliedFilters[filter]}
+                <button id=${filter} class="removeFilterButton">
+                  <img src="../images/icon-remove.svg" />
+                </button>
+              </div>
+              `
+        )
+        .join(" ");
+
+      // console.log(appliedFilters);
+      // [...document.getElementsByClassName("removeFilterButton")].forEach(
+      //   (removeFilter) =>
+      //     removeFilter.addEventListener("click", () => {
+      //       !Array.isArray(appliedFilters[removeFilter.id])
+      //         ? (appliedFilters[removeFilter.id] = "")
+      //         : "";
+      //       console.log(appliedFilters);
+      //     })
+      // );
 
       // console.log(appliedFilters);
     })
@@ -74,3 +95,13 @@ dataFile
     addFilter(data);
   })
   .catch((err) => console.error(err));
+
+// document.getElementById("clearAllFilters").addEventListener("click", () => {
+//   appliedFilters = {
+//     role: "",
+//     level: "",
+//     languages: [],
+//     tools: [],
+//   };
+//   console.log(appliedFilters);
+// });
