@@ -1,4 +1,4 @@
-import { addFilter } from "./jobListings.js";
+import { main } from "./main.js";
 let listingSection = document.getElementById("listings");
 
 export default function createListings(data) {
@@ -28,28 +28,24 @@ export default function createListings(data) {
                   <h5 class="otherInfoItem">${item.location}</h5>
               </div>
           </div>
-          ${filterTabs(item)}
+          <div>
+            <button id="role" class="filterTab"}>${item.role}</button>
+            <button id="level" class="filterTab">${item.level}</button>
+            ${item.languages
+              .map(
+                (language) =>
+                  `<button id="language" class="filterTab">${language}</button>`
+              )
+              .join(" ")}
+            ${item.tools
+              .map(
+                (tool) => `<button id="tool" class="filterTab">${tool}</button>`
+              )
+              .join(" ")}
+          </div>
       </div>
       `
     )
     .join("");
-  addFilter(data);
-}
-
-function filterTabs(item) {
-  return `
-    <div>
-      <button id="role" class="filterTab"}>${item.role}</button>
-      <button id="level" class="filterTab">${item.level}</button>
-      ${item.languages
-        .map(
-          (language) =>
-            `<button id="language" class="filterTab">${language}</button>`
-        )
-        .join(" ")}
-      ${item.tools
-        .map((tool) => `<button id="tool" class="filterTab">${tool}</button>`)
-        .join(" ")}
-    </div>
-  `;
+  main(data);
 }
