@@ -1,8 +1,9 @@
 import createListings from "./createListings.js";
 import filterData from "./filterData.js";
 import showAppliedFilters from "./showAppliedFilters.js";
+import { listingsData } from "./listingsData.js";
 
-export default function removeFilter(appliedFilters, data) {
+export default function removeFilter(appliedFilters) {
   let appliedFilter = document.getElementsByClassName("appliedFilter");
 
   [...appliedFilter].forEach((filter) => {
@@ -28,13 +29,11 @@ export default function removeFilter(appliedFilters, data) {
           }
         });
 
-        let filterRemovedData = data.filter((item) =>
+        let filterRemovedData = listingsData.filter((item) =>
           filterData(item, appliedFilters)
         );
 
-        console.log("remove", filterRemovedData);
-
-        showAppliedFilters(appliedFilters, filterRemovedData);
+        showAppliedFilters(appliedFilters);
 
         createListings(filterRemovedData);
       });

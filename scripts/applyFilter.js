@@ -1,8 +1,9 @@
 import createListings from "./createListings.js";
 import filterData from "./filterData.js";
 import showAppliedFilters from "./showAppliedFilters.js";
+import { listingsData } from "./listingsData.js";
 
-export default function applyFilter(tab, appliedFilters, data) {
+export default function applyFilter(tab, appliedFilters) {
   tab.id == "role"
     ? (appliedFilters.role = tab.textContent)
     : tab.id == "level"
@@ -14,8 +15,11 @@ export default function applyFilter(tab, appliedFilters, data) {
     ? appliedFilters.tools.push(tab.textContent)
     : false;
 
-  let filteredData = data.filter((item) => filterData(item, appliedFilters));
+  let filteredData = listingsData.filter((item) =>
+    filterData(item, appliedFilters)
+  );
 
-  showAppliedFilters(appliedFilters, filteredData);
+  showAppliedFilters(appliedFilters);
+
   createListings(filteredData);
 }

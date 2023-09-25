@@ -1,8 +1,9 @@
+import clearAllFilters from "../clearAllFilters.js";
 import removeFilter from "./removeFilter.js";
 
 let filters = document.getElementById("filters");
 
-export default function showAppliedFilters(appliedFilters, data) {
+export default function showAppliedFilters(appliedFilters) {
   filters.innerHTML = Object.keys(appliedFilters)
     .map((filter) =>
       appliedFilters[filter] == ""
@@ -12,13 +13,13 @@ export default function showAppliedFilters(appliedFilters, data) {
             .map(
               (value) =>
                 `
-                    <div class="appliedFilter">
-                      ${value}
-                      <button class="removeFilterButton">
-                        <img src="../images/icon-remove.svg" />
-                      </button>
-                    </div>
-                    `
+                  <div class="appliedFilter">
+                    ${value}
+                    <button class="removeFilterButton">
+                      <img src="../images/icon-remove.svg" />
+                    </button>
+                  </div>
+                `
             )
             .join(" ")
         : `
@@ -32,7 +33,6 @@ export default function showAppliedFilters(appliedFilters, data) {
     )
     .join(" ");
 
-  console.log("show:", data);
-
-  removeFilter(appliedFilters, data);
+  removeFilter(appliedFilters);
+  clearAllFilters(appliedFilters);
 }
