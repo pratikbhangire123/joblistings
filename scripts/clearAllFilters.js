@@ -1,7 +1,7 @@
-import createListings from "./scripts/createListings.js";
-import showAppliedFilters from "./scripts/showAppliedFilters.js";
-import { listingsData } from "./scripts/listingsData.js";
-import filterData from "./scripts/filterData.js";
+import { listingsData } from "./listingsData.js";
+import filterData from "./filterData.js";
+import showAppliedFilters from "./showAppliedFilters.js";
+import createListings from "./createListings.js";
 
 export default function clearAllFilters(appliedFilters) {
   document.getElementById("clearAllFilters").addEventListener("click", () => {

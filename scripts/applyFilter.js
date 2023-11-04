@@ -1,7 +1,7 @@
-import createListings from "./createListings.js";
+import { listingsData } from "./listingsData.js";
 import filterData from "./filterData.js";
 import showAppliedFilters from "./showAppliedFilters.js";
-import { listingsData } from "./listingsData.js";
+import createListings from "./createListings.js";
 
 export default function applyFilter(tab, appliedFilters) {
   tab.id == "role"

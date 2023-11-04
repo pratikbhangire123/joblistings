@@ -1,9 +1,9 @@
-import clearAllFilters from "../clearAllFilters.js";
 import removeFilter from "./removeFilter.js";
-
-let filters = document.getElementById("filters");
+import clearAllFilters from "./clearAllFilters.js";
 
 export default function showAppliedFilters(appliedFilters) {
+  let filters = document.getElementById("filters");
+
   filters.innerHTML = Object.keys(appliedFilters)
     .map((filter) =>
       appliedFilters[filter] == ""

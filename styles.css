@@ -11,24 +11,19 @@ body {
   background-color: hsl(180, 52%, 96%);
 }
 
-header {
-  position: relative;
-}
-
 header > img {
   background-color: hsl(180, 29%, 50%);
 }
 
 #appliedFilters {
-  position: absolute;
+  position: relative;
   visibility: hidden;
   display: flex;
-  width: 79.7%;
-  bottom: -15%;
+  bottom: 50px;
   align-items: center;
   justify-content: space-between;
   margin: 0 8rem;
-  padding: 1.2rem;
+  padding: 1rem 2rem;
   background-color: #fff;
   border-radius: 0.3rem;
   box-shadow: 0 5px 10px 0 rgba(91, 164, 164, 0.25);
@@ -47,10 +42,12 @@ header > img {
 
 #filters {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 #listings {
-  margin: 4rem 8rem;
+  margin: -2rem 8rem 4rem 8rem;
 }
 
 #listingCard {
@@ -61,7 +58,6 @@ header > img {
   padding: 1.5rem;
   background-color: #fff;
   border-radius: 0.3rem;
-  border-left: 5px solid hsl(180, 29%, 50%);
   box-shadow: 0 5px 10px 0 rgba(91, 164, 164, 0.25);
 }
 
@@ -71,6 +67,9 @@ header > img {
 }
 
 #listingCard > div:nth-child(3) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin: 0 0 0 auto;
 }
 
@@ -85,7 +84,7 @@ header > img {
 }
 
 #labelNew {
-  margin: 0 0.5rem 0 0.5rem;
+  margin: 0 0.5rem;
   padding: 0.3rem 0.5rem;
   font-size: 13px;
   font-weight: 700;
@@ -125,7 +124,6 @@ header > img {
   margin: 0;
   font-size: 15px;
   font-weight: 500;
-  color: hsl(180, 8%, 52%);
 }
 
 .filterTab {
@@ -146,7 +144,6 @@ header > img {
 
 .appliedFilter {
   position: relative;
-  margin: 0 0.5rem;
   padding-left: 0.5rem;
   font-weight: 700;
   color: hsl(180, 29%, 50%);
@@ -163,4 +160,66 @@ header > img {
   border-top-right-radius: 0.3rem;
   border-bottom-right-radius: 0.3rem;
   cursor: pointer;
+}
+
+.removeFilterButton:hover {
+  background-color: hsl(180, 14%, 20%);
+}
+
+@media (max-width: 376px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  #appliedFilters {
+    margin: 1rem 2rem 1rem 2rem;
+    padding: 1rem;
+  }
+
+  #filters {
+    gap: 1rem;
+  }
+
+  #listings {
+    margin: -2rem 2rem 2rem 2rem;
+  }
+
+  #listingCard {
+    align-items: start;
+    flex-direction: column;
+    margin-top: 3rem;
+  }
+
+  #listingCard > img {
+    position: relative;
+    top: -50px;
+    height: 50px;
+    margin-bottom: -40px;
+  }
+
+  #listingCard > div:nth-child(2) {
+    min-width: 100%;
+    margin-left: 0;
+  }
+
+  #listingCard > div:nth-child(3) {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    gap: 1rem;
+    border-top: 1px solid hsl(180, 8%, 52%);
+  }
+
+  #positionName {
+    margin: 1rem 0;
+  }
+
+  #otherInfo {
+    width: 80%;
+  }
+}
+
+@media (min-width: 376px) {
+  .mobile-only {
+    display: none !important;
+  }
 }
