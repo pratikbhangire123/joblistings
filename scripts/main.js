@@ -1,4 +1,4 @@
-import { listingsData } from "./listingsData.js";
+import { getListingsData, listingsData } from "./listingsData.js";
 import createListings from "./createListings.js";
 import applyFilter from "./applyFilter.js";
 
@@ -9,7 +9,7 @@ let appliedFilters = {
   tools: [],
 };
 
-export function main() {
+export default function main() {
   let listingCards = document.querySelectorAll("#listingCard");
 
   let appliedFiltersContainer = document.getElementById("appliedFilters");
@@ -44,5 +44,8 @@ export function main() {
   });
 }
 
-createListings(listingsData);
-main();
+getListingsData();
+setTimeout(() => {
+  createListings(listingsData);
+  main();
+}, 3000);

@@ -1,4 +1,4 @@
-import { main } from "./main.js";
+import main from "./main.js";
 
 export default function createListings(data) {
   let listingSection = document.getElementById("listings");
@@ -58,5 +58,5 @@ export default function createListings(data) {
     )
     .join("");
 
-  main(data);
+  main();
 }

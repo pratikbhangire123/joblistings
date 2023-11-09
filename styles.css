@@ -166,18 +166,47 @@ header > img {
   background-color: hsl(180, 14%, 20%);
 }
 
-@media (max-width: 376px) {
-  .desktop-only {
-    display: none !important;
-  }
-
+@media (max-width: 768px) {
   #appliedFilters {
-    margin: 1rem 2rem 1rem 2rem;
+    margin: 1rem 4rem 1rem 4rem;
     padding: 1rem;
   }
 
   #filters {
     gap: 1rem;
+  }
+
+  #listings {
+    margin: -2rem 4rem 4rem 4rem;
+  }
+
+  #listingCard > img {
+    height: 70px;
+  }
+
+  #listingCard > div:nth-child(2) {
+    min-width: 40%;
+    margin-left: 1rem;
+  }
+
+  #listingCard > div:nth-child(3) {
+    min-width: 40%;
+    margin-left: 1rem;
+    gap: 1rem;
+  }
+
+  #positionName {
+    margin: 0.5rem 0;
+  }
+
+  #otherInfo {
+    width: 90%;
+  }
+}
+
+@media (max-width: 426px) {
+  #appliedFilters {
+    margin: 1rem 2rem 1rem 2rem;
   }
 
   #listings {
@@ -204,13 +233,23 @@ header > img {
 
   #listingCard > div:nth-child(3) {
     margin-top: 1rem;
+    margin-left: 0;
     padding-top: 1rem;
-    gap: 1rem;
     border-top: 1px solid hsl(180, 8%, 52%);
   }
 
   #positionName {
     margin: 1rem 0;
+  }
+
+  #otherInfo {
+    width: 67%;
+  }
+}
+
+@media (max-width: 376px) {
+  .desktop-only {
+    display: none !important;
   }
 
   #otherInfo {
